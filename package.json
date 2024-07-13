@@ -1,0 +1,15 @@
+{
+  "name": "imagine",
+  "scripts": {
+    "dev": "tsx watch localhost.ts"
+  },
+  "dependencies": {
+    "hono": "^4.4.13"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "esbuild": "^0.23.0",
+    "tsx": "^4.16.2"
+  },
+  "packageManager": "pnpm@9.5.0"
+}
