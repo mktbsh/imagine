@@ -1,13 +1,15 @@
 import type { Context, Env } from "hono";
 
-const REQUEST_ID = "requestId";
+export const CONTEXT_KEYS = {
+  REQUEST_ID: "requestId",
+} as const;
 
 export interface AppContext extends Env {
   Variables: {
-    [REQUEST_ID]: string;
+    [CONTEXT_KEYS.REQUEST_ID]: string;
   };
 }
 
 export function getRequestId(c: Context<AppContext>): string {
-  return c.get(REQUEST_ID);
+  return c.get(CONTEXT_KEYS.REQUEST_ID);
 }
