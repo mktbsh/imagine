@@ -1,5 +1,7 @@
-import { Hono } from "hono";
-import type { AppContext } from "./context";
+import { createHono } from "./base";
+import { handleError } from "./error-handler";
+import { registerMiddlewares } from "./middleware";
+import { status } from "./routes/status";
 
 export interface CreateAppOptions {
   basePath?: string;
@@ -12,18 +14,12 @@ const defaultOptions: CreateAppOptions = {
 export function createApp(options: CreateAppOptions = defaultOptions) {
   const { basePath = "/" } = options;
 
-  const app = new Hono<AppContext>().basePath(basePath);
+  const app = createHono().basePath(basePath);
 
-  // TODO: middleware
+  registerMiddlewares(app);
+  app.onError(handleError);
 
-  // TODO: error handling
-
-  // health check
-  app.get("/status", (c) =>
-    c.json({
-      ok: true,
-    })
-  );
+  app.route("/status", status);
 
   return app;
 }
