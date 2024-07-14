@@ -1,9 +1,11 @@
 import { createRoute, z } from "@hono/zod-openapi";
 import { createHono } from "../../base";
 
-const responseSchema = z.object({
-  ok: z.boolean(),
-});
+const responseSchema = z
+  .object({
+    ok: z.boolean(),
+  })
+  .openapi("StatusResponse");
 
 const getStatus = createRoute({
   path: "/",
