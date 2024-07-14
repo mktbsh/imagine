@@ -32,3 +32,6 @@ lerna-debug.log*
 
 # misc
 .DS_Store
+
+# file_upload
+local-imagine-data-bucket
