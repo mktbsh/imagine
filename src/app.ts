@@ -3,6 +3,7 @@ import { handleError } from "./error-handler";
 import { registerMiddlewares } from "./middleware";
 import { openAPIRoute } from "./routes/spec";
 import { statusAPI } from "./routes/status";
+import { uploadAPI } from "./routes/upload";
 
 export interface CreateAppOptions {
   basePath?: string;
@@ -22,6 +23,7 @@ export function createApp(options: CreateAppOptions = defaultOptions) {
 
   openAPIRoute("/spec", app);
   app.route("/status", statusAPI);
+  app.route("/upload", uploadAPI);
 
   return app;
 }
