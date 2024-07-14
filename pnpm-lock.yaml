@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@hono/swagger-ui':
+        specifier: ^0.4.0
+        version: 0.4.0(hono@4.4.13)
+      '@hono/zod-openapi':
+        specifier: ^0.14.9
+        version: 0.14.9(hono@4.4.13)(zod@3.23.8)
       hono:
         specifier: ^4.4.13
         version: 4.4.13
@@ -29,6 +35,11 @@ importers:
         version: 4.16.2
 
 packages:
+
+  '@asteasolutions/zod-to-openapi@7.1.1':
+    resolution: {integrity: sha512-lF0d1gAc0lYLO9/BAGivwTwE2Sh9h6CHuDcbk5KnGBfIuAsAkDC+Fdat4dkQY3CS/zUWKHRmFEma0B7X132Ymw==}
+    peerDependencies:
+      zod: ^3.20.2
 
   '@biomejs/biome@1.8.3':
     resolution: {integrity: sha512-/uUV3MV+vyAczO+vKrPdOW0Iaet7UnJMU4bNMinggGJTAnBPjCoLEYcyYtYHNnUNYlv4xZMH6hVIQCAozq8d5w==}
@@ -369,6 +380,24 @@ packages:
     resolution: {integrity: sha512-e6oHjNiErRxsZRZBmc2KucuvY3btlO/XPncIpP2X75bRdTilF9GLjm3NHvKKunpJbbJJj31/FoPTksTf8djAVw==}
     engines: {node: '>=18.14.1'}
 
+  '@hono/swagger-ui@0.4.0':
+    resolution: {integrity: sha512-8lF+dexzgV2HRM1R/gf49E5djroq4jVMYMSwLkSF9pT0I6sYhuqirFDCRFrBtbbLCBsKzw6f2MF5rS+WY3d7Nw==}
+    peerDependencies:
+      hono: '*'
+
+  '@hono/zod-openapi@0.14.9':
+    resolution: {integrity: sha512-7qWxZiSG4CogPb00TKorPMb2YsniOI0AReFrR7nIvsIdZ5XeorIQtFTI7G+o7HaaKPyzSPqcRllkFnQIIqxCMQ==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      hono: '>=4.3.6'
+      zod: 3.*
+
+  '@hono/zod-validator@0.2.2':
+    resolution: {integrity: sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.19.1
+
   '@types/node@20.14.10':
     resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
 
@@ -394,6 +423,9 @@ packages:
     resolution: {integrity: sha512-c6qqenclmQ6wpXzqiElMa2jt423PVCmgBreDfC5s2lPPpGk7d0lOymd8QTzFZyYC5mSSs6imiTMPip+gLwuW/g==}
     engines: {node: '>=16.0.0'}
 
+  openapi3-ts@4.3.3:
+    resolution: {integrity: sha512-LKkzBGJcZ6wdvkKGMoSvpK+0cbN5Xc3XuYkJskO+vjEQWJgs1kgtyUk0pjf8KwPuysv323Er62F5P17XQl96Qg==}
+
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
@@ -405,7 +437,20 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
+  yaml@2.4.5:
+    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+
 snapshots:
+
+  '@asteasolutions/zod-to-openapi@7.1.1(zod@3.23.8)':
+    dependencies:
+      openapi3-ts: 4.3.3
+      zod: 3.23.8
 
   '@biomejs/biome@1.8.3':
     optionalDependencies:
@@ -585,6 +630,22 @@ snapshots:
 
   '@hono/node-server@1.12.0': {}
 
+  '@hono/swagger-ui@0.4.0(hono@4.4.13)':
+    dependencies:
+      hono: 4.4.13
+
+  '@hono/zod-openapi@0.14.9(hono@4.4.13)(zod@3.23.8)':
+    dependencies:
+      '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
+      '@hono/zod-validator': 0.2.2(hono@4.4.13)(zod@3.23.8)
+      hono: 4.4.13
+      zod: 3.23.8
+
+  '@hono/zod-validator@0.2.2(hono@4.4.13)(zod@3.23.8)':
+    dependencies:
+      hono: 4.4.13
+      zod: 3.23.8
+
   '@types/node@20.14.10':
     dependencies:
       undici-types: 5.26.5
@@ -651,6 +712,10 @@ snapshots:
 
   hono@4.4.13: {}
 
+  openapi3-ts@4.3.3:
+    dependencies:
+      yaml: 2.4.5
+
   resolve-pkg-maps@1.0.0: {}
 
   tsx@4.16.2:
@@ -661,3 +726,7 @@ snapshots:
       fsevents: 2.3.3
 
   undici-types@5.26.5: {}
+
+  yaml@2.4.5: {}
+
+  zod@3.23.8: {}
