@@ -1,7 +1,8 @@
 import { createHono } from "./base";
 import { handleError } from "./error-handler";
 import { registerMiddlewares } from "./middleware";
-import { status } from "./routes/status";
+import { openAPIRoute } from "./routes/spec";
+import { statusAPI } from "./routes/status";
 
 export interface CreateAppOptions {
   basePath?: string;
@@ -19,7 +20,8 @@ export function createApp(options: CreateAppOptions = defaultOptions) {
   registerMiddlewares(app);
   app.onError(handleError);
 
-  app.route("/status", status);
+  openAPIRoute("/spec", app);
+  app.route("/status", statusAPI);
 
   return app;
 }

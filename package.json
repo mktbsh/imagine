@@ -1,9 +1,12 @@
 {
   "name": "imagine",
+  "version": "0.0.1",
   "scripts": {
     "dev": "tsx watch localhost.ts"
   },
   "dependencies": {
+    "@hono/swagger-ui": "^0.4.0",
+    "@hono/zod-openapi": "^0.14.9",
     "hono": "^4.4.13"
   },
   "devDependencies": {

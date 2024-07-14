@@ -1,9 +1,34 @@
+import { createRoute, z } from "@hono/zod-openapi";
 import { createHono } from "../../base";
 
-export const status = createHono();
+const responseSchema = z.object({
+  ok: z.boolean(),
+});
 
-status.get("/", async (c) => {
-  return c.json({
-    ok: true,
-  });
+const getStatus = createRoute({
+  path: "/",
+  method: "get",
+  description: "health check endpoint",
+  tags: ["Context"],
+  responses: {
+    200: {
+      description: "Status code is always 200 OK.",
+      content: {
+        "application/json": {
+          schema: responseSchema,
+        },
+      },
+    },
+  },
+});
+
+export const statusAPI = createHono();
+
+statusAPI.openapi(getStatus, (c) => {
+  return c.json(
+    {
+      ok: true,
+    },
+    200
+  );
 });
